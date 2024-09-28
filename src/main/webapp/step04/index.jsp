@@ -49,7 +49,7 @@
   <%@ include file="navi.jsp" %>
 
   <main class="main">
-
+    test
     <!-- Hero Section -->
     <section id="hero" class="hero section accent-background">
 
