@@ -38,6 +38,15 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <script>
+     function addToCart(){
+    	 if(confirm("상품을 장바구니에 추가하시겠습니까?")){
+    		 document.addForm.submit();
+    	 }else{
+    		 document.addForm.reset();
+    	 }
+     }
+  </script>
 </head>
 
 <body class="index-page">
@@ -69,8 +78,12 @@
 	  					<p><b>제품상태 : </b><span><%=product.getDescription() %></span></p>
 	  					<p><b>제품가격 : </b><span><%=product.getUnitPrice() %></span></p>
   					    <p>
-  					        <a href="#" class="btn btn-info">상품 주문 &raquo;</a>
-  					        <a href="./index.jsp#products" class="btn btn-secondary">상품 목록 &raquo;</a>
+  					        <form action="./addCart.jsp?id=<%=product.getProductId() %>" name="addForm" method="post">
+  					             
+  					             <a href="./index.jsp#products" class="btn btn-secondary my-2">상품 목록 &raquo;</a>
+  					             <input onclick="addToCart();" class="btn btn-danger my-2" value="장바구니에 상품 추가 &raquo;" type="button">
+  					             <a href="./cart.jsp" class="btn btn-info my-2">장바구니 바로가기 &raquo;</a>
+  					        </form>
   					    </p>
 	  				</div>
 	  			</div>

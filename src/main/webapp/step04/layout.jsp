@@ -42,7 +42,7 @@
 </head>
 
 <body>
-
+  
   <!-- header include-->
   <%@ include file="navi.jsp" %>
   

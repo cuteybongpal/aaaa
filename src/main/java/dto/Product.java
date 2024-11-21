@@ -10,7 +10,7 @@ public class Product implements Serializable{
 	private String category; //분류
 	private String condition; //신상, 신상이 아닌지
 	private String filename; //이미지 파일명
-	//private int quantity; //장바구니에 담은 개수
+	private int quantity; //장바구니에 담은 개수
 	
 	public Product() {
 		super();
@@ -21,6 +21,14 @@ public class Product implements Serializable{
 		this.productId = productId;
 		this.pname = pname;
 		this.unitPrice = unitPrice;
+	}
+    
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 	public String getProductId() {
