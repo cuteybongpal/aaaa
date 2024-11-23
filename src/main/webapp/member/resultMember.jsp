@@ -30,6 +30,12 @@
 
 <!-- Main CSS File -->
 <link href="../resources/assets/css/main.css" rel="stylesheet">
+	<style>
+		h2{
+			margin-top : 5px;
+			color: white;
+		}
+	</style>
 </head>
 <body>
   <!-- header include-->
@@ -43,21 +49,30 @@
   <br>
   <br>
   <br>
-  
-  <h1>회원정보</h1>
-  <div class="container">
-  	<% 
-  	String msg = request.getParameter("msg");
-  	if(msg !=null){
-  		if(msg.equals("1")) out.print("<h2>회원가입을 축하드립니다. 다시 로그인해주세요.</h2>");
-  		if(msg.equals("2")) out.print("<h2>로그인을 축하드립니다.</h2>");
-  		if(msg.equals("3")) out.print("<h2>회원 정보 수정.</h2>");
-  	}
-else{
-  		out.print("<h2>회원정보가 존재하지 않습니다.</h2>");
-  	}
-  	%> 
-  </div>	
+	  <div class="container bg-success text-center p-2 mb-5">
+	  	<% 
+	  	String msg = request.getParameter("msg");
+	  	if(msg !=null){
+	  		if(msg.equals("1")) out.print("<h2>회원가입을 축하드립니다. 다시 로그인해주세요.</h2>");
+	  		if(msg.equals("2")) out.print("<h2>"+ session.getAttribute("sessionId") +"님 환영합니다.</h2>");
+	  		if(msg.equals("3")) out.print("<h2>회원 정보 수정.</h2>");
+	  	}
+		else{
+	  		out.print("<h2>회원정보가 존재하지 않습니다.</h2>");
+	  	}
+	  	%> 
+	  	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
   <!-- footer include -->
   <%@ include file="/step06/footer.jsp" %>
 </body>

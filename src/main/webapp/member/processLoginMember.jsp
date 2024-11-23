@@ -24,7 +24,7 @@ user="C##dbexam" password="m1234"/>
     </sql:query>
     <c:forEach items="${resultSet.rows}" var="row">
          <%
-         session.setAttribute("sessionId", id);
+         	session.setAttribute("sessionId", id);
          %>
          <c:redirect url="resultMember.jsp?msg=2"/>
     </c:forEach>
