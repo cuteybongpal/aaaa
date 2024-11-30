@@ -9,10 +9,10 @@ public class DBConnection {
 		
 		Connection conn = null;
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	    String user = "C##dbexam";
-	    String password ="m1234";
-	   
-	    Class.forName("com.mysql.jdbc.Driver");
+		String user = "C##dbexam";
+		String password = "m1234";
+		
+		Class.forName("oracle.jdbc.driver.OracleDriver");
 	    System.out.println("드라이버 등록 성공");
 	   
 	    //JDBC연동위해 JDBC로딩

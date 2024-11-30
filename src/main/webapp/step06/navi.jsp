@@ -72,6 +72,7 @@
               </ul>
             </li>
             -->
+            
             <li><a href="index.jsp#contact">Content</a></li>
 			<!-- <li class="nav-item dropdown">
 			    <a	class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">판매제품 등록</a>
@@ -94,6 +95,7 @@
 			<li class="nav-item dropdown">
 			    <a	class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">로그인</a>
 				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+				<li><a href='<c:url value = "/BoardListAction.do?pageNum=1"/>'>게시판</a> </li>
 							<c:choose>
 								<c:when test="${empty sessionId}">
 									<li><a class="dropdown-item" href="../member/loginMember.jsp">회원 로그인</a></li>

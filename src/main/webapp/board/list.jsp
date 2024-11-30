@@ -1,7 +1,10 @@
+<%@page import="mvc.model.BoardDTO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList" %>    
+<%@ page import="java.util.*" %>    
 <%@ page import="dto.Product" %>    
+<%@ page import="mvc.model.BoardDTO" %>    
 <jsp:useBean id="productDAO" class="dao.ProductRepository" scope="session"/>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,12 +44,54 @@
   ======================================================== -->
 </head>
 
+<%
+	int pageNum = ((Integer)request.getAttribute("pageNum")).intValue();
+	List boardList = (List)request.getAttribute("boards");
+%>
+
 <body>
   
   <!-- header include-->
   <%@ include file="../step06/navi.jsp" %>
   
-  
+    <div class = "container scation-title">
+  	  	<h2>게시판</h2>
+  	  	<p>ㅁㅇㄻㄻㅇㄻㅇㄹㄹㅇㄴㅁㅁㄴㄹㅇ ㅁㄹㄶㅁㄶㅇ</p>
+  	</div>
+  	<div id="preloader">
+		<form action="'<c:url value = "/BoardListAction.do"/>'">
+			<div class = "text-right">
+				<span class="badge badge-success">전체 건</span>
+			</div>
+			<div style="padding-top:100px">
+				<table class= "table">
+					<tr>
+						<th>번호</th>
+						<th>제목</th>
+						<th>작성일</th>
+						<th>수정일</th>
+						<th>조회</th>
+						<th>글쓴이</th>
+					</tr>
+					<%
+						for (int i = 0; i < boardList.size(); i++){
+							BoardDTO board = (BoardDTO)boardList.get(i);
+					%>
+					<tr>
+						<td><%= board.getNum() %></td>
+						<td><%= board.getSubject() %></td>
+						<td><%= board.getRegist_day() %></td>
+						<td><%= board.getUpdate_day() %></td>
+						<td><%= board.getHit() %></td>
+						<td><%= board.getName() %></td>
+					</tr>
+					<%
+						}	
+					%>
+				</table>
+			</div>
+		</form>  
+  	</div>
   
   
   

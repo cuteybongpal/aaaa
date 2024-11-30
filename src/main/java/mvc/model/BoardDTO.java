@@ -10,6 +10,7 @@ public class BoardDTO {
 	private int hit;
 	private String ip;
 	private String update_day;
+	
 	public int getNum() {
 		return num;
 	}
