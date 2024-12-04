@@ -10,10 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.ProductRepository;
+import dto.Product;
 import mvc.model.BoardDAO;
 import mvc.model.BoardDTO;
 
-public class BoardController extends HttpServlet {
+public class DataController extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
 	static final int LISTCOUNT = 10;
 	
@@ -39,10 +42,17 @@ public class BoardController extends HttpServlet {
 			  RequestDispatcher rd = request.getRequestDispatcher("./board/list.jsp");
 			  rd.forward(request, response);
 		}
+		if (command.equals("/ProductListAction.do")) {
+			requestProductList(request);
+			RequestDispatcher rd = request.getRequestDispatcher("./product/product_list.jsp");
+			rd.forward(request, response);
+		}
+		if (command.equals("/ProductAction.do")) {
+			
+		}
 	}
 	
 	public void requestBoardList(HttpServletRequest request) { //등록한 글 목록 가져오기
-		System.out.println("post");
 		BoardDAO dao = BoardDAO.getInstance();
 		List<BoardDTO> boards = new ArrayList<BoardDTO>(); 
 		int pageNum = 1;
@@ -55,8 +65,15 @@ public class BoardController extends HttpServlet {
 		
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("boards", boards);
+	}
+	
+	public void requestProductList(HttpServletRequest request) {
+		String con = request.getParameter("Constraint");
 		
+		if (con == null || con.isEmpty())
+			con = "";
 		
-		
+		List<Product> products = ProductRepository.getInstance().getAllProduct(con);
+		request.setAttribute("products", products);
 	}
 }

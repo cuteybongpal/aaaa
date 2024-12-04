@@ -38,7 +38,7 @@
     <div class="branding d-flex align-items-center">
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
-        <a href="../step06/index.jsp" class="logo d-flex align-items-center">
+        <a href="${pageContext.request.contextPath}/step06/index.jsp" class="logo d-flex align-items-center">
           <!-- Uncomment the line below if you also wish to use an image logo -->
           <!-- <img src="../resources/assets/img/logo.png" alt=""> -->
           <h1 class="sitename">Impact</h1>
@@ -48,11 +48,11 @@
 		<!-- 이반 사용자용 네브 -->
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="index.jsp#hero" class="active">Home<br></a></li>
-            <li><a href="index.jsp#about">About</a></li>
-            <li><a href="index.jsp#services">Services</a></li>
-            <li><a href="index.jsp#products">Products</a></li>
-            <li><a href="index.jsp#team">Team</a></li>
+            <li><a href="${pageContext.request.contextPath}/step06/index.jsp#hero" class="active">Home<br></a></li>
+            <li><a href="${pageContext.request.contextPath}/step06/index.jsp#about">About</a></li>
+            <li><a href="${pageContext.request.contextPath}/step06/index.jsp#services">Services</a></li>
+            <li><a href='<c:url value = "/ProductListAction.do"/>'>Products</a></li>
+            <li><a href="${pageContext.request.contextPath}/step06/index.jsp#team">Team</a></li>
             <li><a href="blog.jsp">Blog</a></li>
             <!-- <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
@@ -73,7 +73,7 @@
             </li>
             -->
             
-            <li><a href="index.jsp#contact">Content</a></li>
+            <li><a href="${pageContext.request.contextPath}/step06/index.jsp#contact">Content</a></li>
 			<!-- <li class="nav-item dropdown">
 			    <a	class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">판매제품 등록</a>
 				
@@ -82,9 +82,9 @@
 				<c:when test="${ sessionId eq 'admin' }">
 					<nav class="navmenu">
 						<ul class="dropdown">
-							<li><a class="dropdown-item fw-bold" href="addProduct.jsp">판매제품 등록</a></li>
-							<li><a class="dropdown-item fw-bold" href="index.jsp?edit=update#products">판매제품 수정</a></li>
-							<li><a class="dropdown-item fw-bold" href="index.jsp?edit=delete#products">판매제품 삭제</a></li>
+							<li><a class="dropdown-item fw-bold" href="${pageContext.request.contextPath}/step06/addProduct.jsp">판매제품 등록</a></li>
+							<li><a class="dropdown-item fw-bold" href="<c:url value = "/ProductListAction.do?edit=update"/>">판매제품 수정</a></li>
+							<li><a class="dropdown-item fw-bold" href="<c:url value = "/ProductListAction.do?edit=delete"/>">판매제품 삭제</a></li>
 						</ul>
 					</nav>
 				</c:when>
@@ -98,13 +98,13 @@
 				<li><a href='<c:url value = "/BoardListAction.do?pageNum=1"/>'>게시판</a> </li>
 							<c:choose>
 								<c:when test="${empty sessionId}">
-									<li><a class="dropdown-item" href="../member/loginMember.jsp">회원 로그인</a></li>
+									<li><a class="dropdown-item" href="${pageContext.request.contextPath}/member/loginMember.jsp">회원 로그인</a></li>
 									<li><a class="dropdown-item" href="../member/addMember.jsp">회원 가입</a></li>
 								</c:when>
 								<c:otherwise>
 									<li class="dropdown-item" style="color : gray">[<%= sessionId %>]님 로그인 중</a></li>
-									<li><a class="dropdown-item" href="../member/updateMember.jsp">회원 수정</a></li>
-									<li><a class="dropdown-item" href="../member/logoutMember.jsp">로그아웃</a></li>
+									<li><a class="dropdown-item" href="${pageContext.request.contextPath}/member/updateMember.jsp">회원 수정</a></li>
+									<li><a class="dropdown-item" href="${pageContext.request.contextPath}/member/logoutMember.jsp">로그아웃</a></li>
 								</c:otherwise>
 							</c:choose>
 							

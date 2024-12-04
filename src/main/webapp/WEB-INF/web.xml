@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app>
 	<servlet>
-		<servlet-name>BoardController</servlet-name>
-		<servlet-class>mvc.controller.BoardController</servlet-class>
+		<servlet-name>DataController</servlet-name>
+		<servlet-class>mvc.controller.DataController</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>BoardController</servlet-name>
+		<servlet-name>DataController</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 </web-app>

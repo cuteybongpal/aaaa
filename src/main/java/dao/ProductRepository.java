@@ -1,8 +1,14 @@
 package dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import dto.Product;
+import mvc.database.DBConnection;
 
 public class ProductRepository {
 	private ArrayList<Product> listOfProducts = new ArrayList<Product>(); //
@@ -11,32 +17,6 @@ public class ProductRepository {
 	public static ProductRepository getInstance() {
 		return instance;
 	}
-	
-	public ProductRepository() {
-		Product phone = new Product("P1234", "삼성Phone 8v", 500000);
-		phone.setDescription("최신 신상폰으로 ai가 탑재된 폰입니다.");
-		phone.setCategory("스마트폰");
-		phone.setCondition("신상품");
-		phone.setFilename("01_samsungPhone.png");
-		
-		Product watch = new Product("P1235", "iphone 와치", 600000);
-		watch.setDescription("폰의 기능을 가진 시계");
-		watch.setCategory("스마트폰");
-		watch.setCondition("중고품");
-		watch.setFilename("02_iphone.png");
-		
-		Product robot = new Product("P1239", "AI로봇", 700000);
-		robot.setDescription("최신 신상폰으로 ai가 탑재된 로봇입니다.");
-		robot.setCategory("로봇");
-		robot.setCondition("신상품");
-		robot.setFilename("03_ai로봇.jpg");
-		
-		//상품목록을 리스트에 추가
-		listOfProducts.add(phone);
-		listOfProducts.add(watch);
-		listOfProducts.add(robot);
-	}
-	
 	public ArrayList<Product> getAllProducts(){
 		return  listOfProducts;
 	}
@@ -58,6 +38,50 @@ public class ProductRepository {
 	//하나의 제품에 대한 다양한 정보를 제품
 	public void addProduct(Product product) {
 		listOfProducts.add(product);
+	}
+	public List<Product> getAllProduct(String Constraint){
+		List<Product> products = new ArrayList<Product>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "";
+		Connection conn = null;
+		try {
+			conn = DBConnection.getConnection();
+			if (!Constraint.isEmpty()) {
+				sql = "select * from product where p_pname like '%"+ Constraint +"%'";
+				pstmt = conn.prepareStatement(sql);
+			}
+			else {
+				sql = "select * from product";
+				pstmt = conn.prepareStatement(sql);
+			}
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Product product = new Product();
+				product.setProductId(rs.getString("p_productId"));
+				product.setPname((rs.getString("p_pname")));
+				product.setUnitPrice(rs.getInt("p_unitPrice"));
+				product.setDescription(rs.getString("p_description"));
+				product.setCategory(rs.getString("p_category"));
+				product.setCondition(rs.getString("p_condition"));
+				product.setFilename(rs.getString("p_filename"));
+				product.setQuantity(rs.getInt("p_quantity"));
+				products.add(product);
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if (rs != null) rs.close();
+				if (conn != null) conn.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return products;
 	}
 }
 	
