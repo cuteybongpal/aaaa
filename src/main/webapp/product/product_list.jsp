@@ -16,7 +16,7 @@
 
   <!-- Favicons -->
   <!-- 절대 경로로 수정 -->
-<link href="${pageContext.request.contextPath}/resources/assets/img/favicon.png" rel="icon">
+<link href="+/resources/assets/img/favicon.png" rel="icon">
 <link href="${pageContext.request.contextPath}/resources/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
 <!-- Fonts -->
@@ -113,12 +113,12 @@
                   <p><%=products.get(i).getUnitPrice()%></p>
                   <p><%=products.get(i).getCondition()%></p>
                   <br>
-				  <a href="${pageContext.request.contextPath}/step06/product.jsp?id=<%=products.get(i).getProductId()%>" class="btn btn-secondary">상세 정보 바로가기 &raquo;</a> 
+				  <a href="<c:url value = "/ProductAction.do?"> <c:param name = "id" value="${products.get(i).getProductId()}"/> </c:url>" class="btn btn-secondary">상세 정보 바로가기 &raquo;</a> 
                     
                      <%
                         if(edit.equals("update")){
                      %>
-                     <a href="${pageContext.request.contextPath}/step06/editProduct.jsp?id=<%=products.get(i).getProductId() %>" class="btn btn-success">수정 &raquo;</a>
+                     <a href="<c:url value = "/ProductListAction.do?edit=delete"/>" class="btn btn-success">수정 &raquo;</a>
                      <%
                         }else if(edit.equals("delete")){
                      %>

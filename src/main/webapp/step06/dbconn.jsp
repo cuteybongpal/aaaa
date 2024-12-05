@@ -10,9 +10,9 @@
 </head>
 <body>
 <%
-Connection conn = null;
-PreparedStatement pstmt = null;
-ResultSet rs = null; 
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null; 
 
 try{
 	   String url = "jdbc:oracle:thin:@localhost:1521:xe";

@@ -42,13 +42,15 @@ public class DataController extends HttpServlet {
 			  RequestDispatcher rd = request.getRequestDispatcher("./board/list.jsp");
 			  rd.forward(request, response);
 		}
-		if (command.equals("/ProductListAction.do")) {
+		else if (command.equals("/ProductListAction.do")) {
 			requestProductList(request);
 			RequestDispatcher rd = request.getRequestDispatcher("./product/product_list.jsp");
 			rd.forward(request, response);
 		}
-		if (command.equals("/ProductAction.do")) {
-			
+		else if (command.equals("/ProductAction.do")) {
+			requestProduct(request);
+			RequestDispatcher rd = request.getRequestDispatcher("./product/product.jsp");
+			rd.forward(request, response);
 		}
 	}
 	
@@ -65,6 +67,30 @@ public class DataController extends HttpServlet {
 		
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("boards", boards);
+		
+		String items = request.getParameter("items");
+		String text = request.getParameter("text");
+		
+		
+		
+		int total_record = dao.getListCount(items, text);
+		boards = dao.getBoardList(pageNum, limit, items, text);
+		
+		request.setAttribute("total_record", total_record);
+		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("boards", boards);
+		
+		int total_page;
+		
+		if (total_record % limit == 0) {
+			total_page = total_record/limit;
+		}
+		else {
+			total_page = (total_record / limit) + 1;
+		}
+		
+		request.setAttribute("total_page", total_page);
+		request.setAttribute("boards", boards);
 	}
 	
 	public void requestProductList(HttpServletRequest request) {
@@ -75,5 +101,12 @@ public class DataController extends HttpServlet {
 		
 		List<Product> products = ProductRepository.getInstance().getAllProduct(con);
 		request.setAttribute("products", products);
+	}
+	public void requestProduct(HttpServletRequest request) {
+		String con = request.getParameter("id");
+		
+		Product _product = ProductRepository.getInstance().getProductById(con);
+		
+		request.setAttribute("product", _product);
 	}
 }

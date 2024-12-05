@@ -82,7 +82,7 @@
 				<c:when test="${ sessionId eq 'admin' }">
 					<nav class="navmenu">
 						<ul class="dropdown">
-							<li><a class="dropdown-item fw-bold" href="${pageContext.request.contextPath}/step06/addProduct.jsp">판매제품 등록</a></li>
+							<li><a class="dropdown-item fw-bold" href="${pageContext.request.contextPath}/product/addProduct.jsp">판매제품 등록</a></li>
 							<li><a class="dropdown-item fw-bold" href="<c:url value = "/ProductListAction.do?edit=update"/>">판매제품 수정</a></li>
 							<li><a class="dropdown-item fw-bold" href="<c:url value = "/ProductListAction.do?edit=delete"/>">판매제품 삭제</a></li>
 						</ul>

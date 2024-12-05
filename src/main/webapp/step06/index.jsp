@@ -574,7 +574,7 @@ function deleteConfirm(id){
                   <p><%=rs.getString("p_condition")%></p>
                   <br />
                   <p>
-                     <a href="./product.jsp?id=<%=rs.getString("p_productId")%>" class="btn btn-secondary">상세 정보 바로가기 &raquo;</a> 
+                     <a href="<c:url value = "/ProductAction.do?"> <c:param name = "id" value='${rs.getString("p_productId")}'/> </c:url>" class="btn btn-secondary">상세 정보 바로가기 &raquo;</a> 
                     
                      <%
                         if(edit.equals("update")){

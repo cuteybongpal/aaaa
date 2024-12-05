@@ -91,7 +91,7 @@ enBtn.addEventListener("click",function(){
   <fmt:setLocale value='<%=request.getParameter("language") %>'/>
   <fmt:bundle basename="bundle.message">
   <!-- header include-->
-  <%@ include file="navi.jsp" %>
+  <%@ include file="../step06/navi.jsp" %>
   <main class="main">
   	<section id="#" class="section bs-warning mt-5 ">
   		<div class="container position-relative mt-5">
@@ -226,10 +226,9 @@ enBtn.addEventListener("click",function(){
   
 	
  <!-- footer include -->
- <%@ include file="footer.jsp" %>
+ <%@ include file="../step06/footer.jsp" %>
  
  </fmt:bundle>
- 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
