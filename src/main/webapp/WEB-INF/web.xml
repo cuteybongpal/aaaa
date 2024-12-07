@@ -8,4 +8,8 @@
 		<servlet-name>DataController</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
+	<session-config>
+		<tracking-mode>COOKIE</tracking-mode>
+		<session-timeout>300</session-timeout>
+	</session-config>
 </web-app>

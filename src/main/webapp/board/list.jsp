@@ -47,6 +47,7 @@
   		padding-top : 100px;
   	}
   </style>
+  
 </head>
 
 <%
@@ -54,21 +55,33 @@
 	List boardList = (List)request.getAttribute("boards");
 	int totoal_record = (Integer)request.getAttribute("total_record");
 	int total_page = (Integer)request.getAttribute("total_page");
+	String items = (String)request.getAttribute("items");
+	String text = (String)request.getAttribute("text");
 %>
 
 <body>
   
   <!-- header include-->
   <%@ include file="../step06/navi.jsp" %>
-  
+  <script>
+  	function checkForm(){
+  		if (${sessionId==null}){
+  			alert("로그인해 주세요")
+  			location.href="./member/loginMember.jsp";
+  			return false;
+  		}
+  		location.href="./BoardWriteForm.do?id=<%= sessionId %>";
+  		
+  	}
+  </script>
     <div class = "container section-title">
   	  	<h2>게시판</h2>
   	  	<p>lorem inputsume</p>
   	</div>
   	<div class="container">
-		<form action="'<c:url value = "/BoardListAction.do"/>'">
+		<form action="<c:url value = "/BoardListAction.do"/>" method="get">
 			<div class="text-right">
-				<span class"">전체 <%= totoal_record %> 건</span>
+				<span class="">전체 <%= totoal_record %> 건</span>
 			</div>
 			<div style="padding-top:100px" class = "mb-5">
 				<table class= "table">
@@ -86,7 +99,7 @@
 					%>
 					<tr>
 						<td><%= board.getNum() %></td>
-						<td><%= board.getSubject() %></td>
+						<td><a href="./BoardViewAction.do?num=<%= board.getNum() %>&pageNum=<%= pageNum %>"><%= board.getSubject() %></a></td>
 						<td><%= board.getRegist_day() %></td>
 						<td><%= board.getUpdate_day() %></td>
 						<td><%= board.getHit() %></td>
@@ -108,10 +121,10 @@
 							</select>
 							<input type="text" name = "text">
 							<input type ="submit" class="btn btn-info" value="검색">
-							<a class="btn btn-danger" href="'<c:url value = "/BoardListAction.do"/>'">검색 초기화</a>
+							<a class="btn btn-danger" href="<c:url value = "/BoardListAction.do?pageNum=1"/>">검색 초기화</a>
 						</td>
 						<td width="100" align = "right">
-							<a href="#" class="btn btn-warning">글쓰기</a>
+							<a href="#" class="btn btn-warning" onClick="checkForm()">글쓰기</a>
 						</td>
 					</tr>
 				</table>				
@@ -120,7 +133,7 @@
 			<div align="center">
 				<c:set var="pageNum" value = "<%= pageNum %>"/>
 				<c:forEach var="i" begin = "1" end="<%= total_page %>">
-					<c:if test="${itesm != null && text != null}">
+					<c:if test="${items != null && text != null}">
 						<a href='<c:url value = "/BoardListAction.do?pageNum=${i}&items=${items}&text=${text}"/>'>
 							<c:choose>
 								 <c:when test="${pageNum== i }">
@@ -132,7 +145,7 @@
 							</c:choose>
 						</a>
 					</c:if>
-					<c:if test="${itesm == null && text == null}">
+					<c:if test="${items == null && text == null}">
 						<a href="<c:url value = "/BoardListAction.do?pageNum=${i}"/>">
 							<c:choose>
 								 <c:when test="${pageNum== i }">
