@@ -188,6 +188,5 @@ public class DataController extends HttpServlet {
 	public void requestBoardDelete(HttpServletRequest request) {
 		BoardDAO dao = BoardDAO.getInstance();
 		int num = Integer.parseInt(request.getParameter("num"));
-		dao.DeleteBoardByNum(num);
 	}
 }

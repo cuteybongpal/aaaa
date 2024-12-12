@@ -39,20 +39,31 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
   <script>
-     function addToCart(){
-    	 if(confirm("상품을 장바구니에 추가하시겠습니까?")){
-    		 document.addForm.submit();
-    	 }else{
-    		 document.addForm.reset();
-    	 }
-     }
+    function addToCart(){
+    	if(confirm("상품을 장바구니에 추가하시겠습니까?")){
+    		document.addForm.submit();
+    	}else{
+    		document.addForm.reset();
+    	}
+    }
+    
+   	
   </script>
 </head>
 
 <body class="index-page">
-
   <!-- header include-->
   <%@ include file="../step06/navi.jsp" %>
+  <script>
+  	function checkForm(){
+ 		if (${sessionId==null}){
+ 			alert("로그인해 주세요")
+ 			location.href="./member/loginMember.jsp";
+ 			return false;
+ 		}
+ 		addToCart();
+ 	}
+  </script>
   <main class="main">
   	<section id="#" class="section bs-warning mt-5 ">
   		<div class="container position-relative mt-5">
@@ -77,9 +88,8 @@
 	  					<p><b>제품가격 : </b><span><%=product.getUnitPrice() %></span></p>
   					    <p>
   					        <form action="${pageContext.request.contextPath}/step06/addCart.jsp?id=<%=product.getProductId() %>" name="addForm" method="post">
-  					             
   					             <a href="${pageContext.request.contextPath}/step06/index.jsp#products" class="btn btn-secondary my-2">상품 목록 &raquo;</a>
-  					             <input onclick="addToCart();" class="btn btn-danger my-2" value="장바구니에 상품 추가 &raquo;" type="button">
+  					             <input onclick="checkForm();" class="btn btn-danger my-2" value="장바구니에 상품 추가 &raquo;" type="button">
   					             <a href="${pageContext.request.contextPath}/step06/cart.jsp" class="btn btn-info my-2">장바구니 바로가기 &raquo;</a>
   					        </form>
   					    </p>

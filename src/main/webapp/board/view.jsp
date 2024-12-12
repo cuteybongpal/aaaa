@@ -118,7 +118,7 @@ html, body {
 							<c:set var = "userId" value = "<%= notice.getId() %>"/>
 							<c:if test ="${sessionId == userId }">
 								<input type="submit" class="btn btn-info" value="수정">
-								<a href="./BoardDeleteAction.do?num=<%= notice.getNum() %>" class="btn btn-danger">삭제</a>
+								<a href="./BoardDeleteAction.do?pageNum=<%= pageNum %>" class="btn btn-success">목록</a>
 							</c:if>
 							<a href="./BoardListAction.do?pageNum=<%= pageNum %>" class="btn btn-success">목록</a>
 							

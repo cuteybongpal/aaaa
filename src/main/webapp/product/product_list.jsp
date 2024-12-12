@@ -40,12 +40,23 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <script>
+	function deleteConfirm(id){
+		if(confirm("해당 상품을 삭제하시겠습니까?") ==  true){
+			location.href="./product/deleteProduct.jsp?id="+id;
+		}else{
+			return;
+		}
+	}
+</script>
 </head>
 
 <body>
 	<%
 		 String edit = request.getParameter("edit");
 		 if (edit == null) edit = "";
+		 String Constraint = request.getParameter("Constraint");
+		 if (Constraint == null) Constraint = "";
 	 %>
   <!-- header include-->
   <%@ include file="../step06/navi.jsp" %>
@@ -65,7 +76,7 @@
 	  <div class="container mb-5">
 	 	 <form class="row center">
 		  <div class="col-11">
-		    <input type="text" class="form-control form-control-lg" placeholder="검색" name="Constraint">
+		    <input type="text" class="form-control form-control-lg" placeholder="검색" name="Constraint" value="<%= Constraint %>">
 		  </div>
 		  <div class="col-1 center">
 		    <button type="submit" class="btn btn-success form-control-lg">검색</button>
@@ -104,7 +115,7 @@
 			<!-- 시작 상품 Item -->
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
               <div class="portfolio-content h-100">
-                <a href="${pageContext.request.contextPath}/resources/assets/img/portfolio/app-1.jpg" data-gallery="portfolio-gallery-app" class="glightbox">
+                <a href="${pageContext.request.contextPath}/resources/assets/img/product/<%=products.get(i).getFilename()%>" data-gallery="portfolio-gallery-app" class="glightbox">
                    <img src="${pageContext.request.contextPath}/resources/assets/img/product/<%=products.get(i).getFilename()%>" class="img-fluid" alt="">
                 </a>
                 <div class="portfolio-info">
@@ -118,7 +129,7 @@
                      <%
                         if(edit.equals("update")){
                      %>
-                     <a href="<c:url value = "/ProductListAction.do?edit=delete"/>" class="btn btn-success">수정 &raquo;</a>
+                     <a href="./product/editProduct.jsp?id=<%= products.get(i).getProductId() %>" class="btn btn-success">수정 &raquo;</a>
                      <%
                         }else if(edit.equals("delete")){
                      %>

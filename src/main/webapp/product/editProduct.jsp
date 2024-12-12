@@ -5,7 +5,7 @@
 <%-- <jsp:useBean id="productDAO" class="dao.ProductRepository" scope="session"/> --%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<%@ include file="dbconn.jsp" %>
+<%@ include file="../step06/dbconn.jsp" %>
 <%
 String productId = request.getParameter("id");
 
@@ -108,7 +108,7 @@ enBtn.addEventListener("click",function(){
   <fmt:setLocale value='<%=request.getParameter("language") %>'/>
   <fmt:bundle basename="bundle.message">
   <!-- header include-->
-  <%@ include file="navi.jsp" %>
+  <%@ include file="../step06/navi.jsp" %>
   <main class="main">
   	<section id="#" class="section bs-warning mt-5 ">
   		<div class="container position-relative mt-5">
@@ -242,7 +242,7 @@ enBtn.addEventListener("click",function(){
   
 	
  <!-- footer include -->
- <%@ include file="footer.jsp" %>
+ <%@ include file="../step06/footer.jsp" %>
  
  </fmt:bundle>
  

@@ -102,7 +102,7 @@
 	}
 </script>
 <%
-	String sessionId = (String) session.getAttribute("sessionId");
+	String _sessionId = (String) session.getAttribute("sessionId");
 %>
 <sql:setDataSource var="dataSource"
 		url="jdbc:oracle:thin:@localhost:1521:xe"
@@ -110,14 +110,14 @@
 
 <sql:query dataSource="${dataSource}" var="resultSet">
    SELECT * FROM member WHERE ID=?
-   <sql:param value="<%=sessionId%>" />
+   <sql:param value="<%=_sessionId%>" />
 </sql:query>
 </head>
 
 <body>
 
 	<!-- header include-->
-	<%@ include file="/step06/navi.jsp"%>
+	<%@ include file="../step06/navi.jsp"%>
 	
 	<div class="container" id="form_layout">
 		<div class="mb-3">

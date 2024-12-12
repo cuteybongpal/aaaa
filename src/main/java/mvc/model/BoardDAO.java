@@ -312,32 +312,6 @@ public class BoardDAO {
 		}
 	}
 	public void DeleteBoardByNum(int num) {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = "";
-
-		sql = "delete from board where board_seq = ?";
 		
-		try {
-			conn = DBConnection.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, num);
-			pstmt.executeUpdate();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (conn != null)
-					conn.close();
-				if (pstmt != null)
-					pstmt.close();
-				if (rs != null)
-					rs.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
 	}
 }

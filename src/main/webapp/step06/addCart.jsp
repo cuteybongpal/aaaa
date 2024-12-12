@@ -53,7 +53,7 @@ if(cnt == 0){
 	list.add(goods); //장바구니 리스트에 새로운 제품을 추가
 }
 
-response.sendRedirect("../step06/product.jsp?id="+id);
+response.sendRedirect("../ProductAction.do?id="+id);
 %> 
 <!DOCTYPE html>
 <html>

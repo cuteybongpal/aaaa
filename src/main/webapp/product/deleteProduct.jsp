@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="dbconn.jsp" %>   
+<%@ include file="../step06/dbconn.jsp" %>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +27,7 @@
    if (pstmt != null) pstmt.close();
    if (conn != null) conn.close();
    
-   response.sendRedirect("index.jsp#products");
+   response.sendRedirect("../ProductListAction.do");
 %>
 </body>
 </html>
