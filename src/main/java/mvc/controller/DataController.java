@@ -174,6 +174,7 @@ public class DataController extends HttpServlet {
 		BoardDTO board = new BoardDTO();
 		board = dao.getBoardByNum(num);
 		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("num", num);
 		request.setAttribute("board", board);
 	}
 	public void requestBoardUpdate(HttpServletRequest request) {
@@ -188,5 +189,6 @@ public class DataController extends HttpServlet {
 	public void requestBoardDelete(HttpServletRequest request) {
 		BoardDAO dao = BoardDAO.getInstance();
 		int num = Integer.parseInt(request.getParameter("num"));
+		dao.DeleteBoardByNum(num);
 	}
 }

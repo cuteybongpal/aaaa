@@ -82,6 +82,7 @@ html, body {
 <%
 	BoardDTO notice = (BoardDTO)request.getAttribute("board");
 	int pageNum = (Integer)request.getAttribute("pageNum");
+	int num = (Integer)request.getAttribute("num");
 %>
 <body>
 
@@ -118,7 +119,7 @@ html, body {
 							<c:set var = "userId" value = "<%= notice.getId() %>"/>
 							<c:if test ="${sessionId == userId }">
 								<input type="submit" class="btn btn-info" value="수정">
-								<a href="./BoardDeleteAction.do?pageNum=<%= pageNum %>" class="btn btn-success">목록</a>
+								<a href="./BoardDeleteAction.do?pageNum=<%= pageNum %>&num=<%=num %>" class="btn btn-danger">삭제하기</a>
 							</c:if>
 							<a href="./BoardListAction.do?pageNum=<%= pageNum %>" class="btn btn-success">목록</a>
 							

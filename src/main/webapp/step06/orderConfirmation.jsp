@@ -143,7 +143,7 @@
 				<!-- 14-15)이전, 주문완료, 취소 버튼 만들고 thankCustomer.jsp, checkOutCancelled.jsp 파일 생성후 thankCustomer.jsp로 이동 -->
 				<a href="./shippingInfo.jsp?cartId=<%=shipping_cartId%>"
 					class="btn btn-secondary mx-2 my-2" role="button"> 이전 </a> <a
-					href="./thankCustomer.jsp" class="btn btn-success mx-2 my-2"
+					href="./index.jsp" class="btn btn-success mx-2 my-2"
 					role="button"> 주문 완료 </a> <a href="./checkOutCancelled.jsp"
 					class="btn btn-secondary mx-2 my-2" role="button"> 취소 </a>
 			</div>
